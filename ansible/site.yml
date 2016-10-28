@@ -1,5 +1,5 @@
 ---
-- hosts: 5.39.86.173
+- hosts: qtrpi.com
   vars:
       doc_root: /srv/www/qt-rpi
 
