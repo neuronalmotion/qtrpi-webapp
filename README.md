@@ -6,6 +6,11 @@ Start by installing Ansible on your development machine:
 sudo pip install ansible
 ```
 
+Install fabric:
+```bash
+sudo apt install fabric
+```
+
 After that, execute the following fab task to prepare your dev environment:
 ```bash
 fab prepare_dev_environment
