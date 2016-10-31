@@ -4,8 +4,7 @@ export class QtVersion {
 }
 
 export class QtBinary {
-    module: string;
-    description: string;
+    modules: string;
     urlRPi1: string;
     urlRPi2: string;
     urlRPi3: string;
