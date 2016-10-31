@@ -1,19 +1,115 @@
-<h2>Waht are the Raspberry Pi precompiled Qt binaries?</h2>
+<h2>What is QtRpi?</h2>
 <p>
-    ...
+	QtRpi is a complete bundle to create Qt application for the Raspberry Pi. This bundle is composed by several parts:
+</p>
+<ul>
+	<li>Preconfigured Qt version for your computer</li>
+	<li>Precompiled Qt binaries for your Raspberry Pi</li>
+	<li>The toolchain</li>
+	<li>A minimal raspbian sysroot</li>
+</ul>
+
+<h2>How to install QtRpi?</h2>
+<p>
+QtRpi requires several tasks to be installed properly on both your computer and  your Raspberry Pi. To facilitate the installation, we created a script to automatically perform all steps for you. This script <b>init-qtrpi-minimal.sh</b> can be found on our <a href="https://github.com/neuronalmotion/qtrpi">QtRpi</a> repository on GitHub.
 </p>
 
-<h2>How to install the precompiled Qt binaries on your RaspberryPi?</h2>
+<h4>
+Clone the repository on your computer
+</h4>
+<pre>
+git clone https://github.com/neuronalmotion/qtrpi.git
+</pre>
 <p>
-    ...
+or <a href="https://github.com/neuronalmotion/qtrpi/archive/develop.zip">download the ZIP file</a>.
 </p>
 
-<h2>How to configure Qt Creator to cross-compile for your RaspberryPi?</h2>
+
+<h4>
+Configure your environement variables
+</h4>
 <p>
-    ...
+The script support several versions of Qt and Raspberry Pi. If you want install a specific version of QtRpi, you should set the following environement variales:
+</p>
+<table class="table table-striped table-hover table-bordered">
+	<thead>
+	    <tr>
+	        <th>Name</th>
+	        <th>Description</th>
+	        <th>Values</th>
+	        <th>Default value</th>
+	    </tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>QTRPI_QT_VERSION</td>
+			<td>The version of the Qt framework</td>
+			<td>5.7</td>
+			<td>5.7</td>
+		</tr>
+		<tr>
+			<td>QTRPI_TARGET_DEVICE</td>
+			<td>The version of the Raspberry Pi board</td>
+			<td>linux-rasp-pi2-g++</td>
+			<td>linux-rasp-pi2-g++</td>
+		</tr>
+		<tr>
+			<td>QTRPI_TARGET_HOST</td>
+			<td>The Raspberry Pi SSH host name. Generally the IP address of your board. For example: pi@192.168.1.5</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>
+Run the script
+</h4>
+<p>
+Check your environement variables describes above before running the script. You should have
+</p>
+<pre>
+cd qtrpi
+./init-qtrpi-minimal.sh
+</pre>
+
+<h4>
+Check your installation
+</h4>
+<p>
+On your computer, you have a folder <b>/opt/qtrpi</b> with:
+</p>
+<ul>
+	<li><b>bin</b> : qmake-rpi a symbolic link to the prefconfigured qmake</li>
+	<li><b>raspbian</b> : the sysroot</li>
+	<li><b>raspi</b> : the toolchain, the preconfigured Qt, the precompiled Qt for Raspberry Pi</li>
+</ul>
+
+<p>
+On your Raspberry Pi, you should get a folder <b>/local/usr/qt5pi</b> with the the precompiled Qt for Raspberry Pi.
 </p>
 
-<h2>How to compile yourself the Raspberry Pi Qt binaries?</h2>
+<h4>
+Export the QtRpi bin path
+</h4>
 <p>
-    ...
+Add the folder <b>/opt/qtrpi/bin</b> to yout PATH.
+</p>
+<pre>
+export PATH=/opt/qtrpi/bin:$PATH # Add this line to your .bashrc
+source ~/.bashrc
+</pre>
+
+<h2>How to use QtRpi?</h2>
+<p>
+Now that QtRpi is installed on your computer and deployed to your Raspberry Pi, you can cross-compile a Qt application. You can now easily cross-compile your project with <b>qmake-rpi</b>.
+</p>
+<pre>
+cd myproject
+qmake-rpi
+make
+make install
+</pre>
+<p>
+The generated binary file is ready to be copy and executed on your Raspberry Pi!
 </p>
