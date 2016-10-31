@@ -8,7 +8,13 @@ sudo pip install ansible
 
 Install fabric:
 ```bash
-sudo apt install fabric
+sudo pip install fabric
+```
+
+Create the file /etc/ansible/hosts:
+```bash
+# Syntax is
+# <domain>    ansible_user=root
 ```
 
 After that, execute the following fab task to prepare your dev environment:
