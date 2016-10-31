@@ -10,3 +10,6 @@ def deploy():
 def upload_dist():
     local('ansible-playbook ansible/site.yml --tags binary')
 
+def download_dist():
+    local('ansible-playbook ansible/site.yml --tags sync')
+

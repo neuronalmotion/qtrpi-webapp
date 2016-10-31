@@ -37,7 +37,7 @@
             recursive=yes
         tags: webapp
 
-      - name: Create binaries directory structure
+      - name: create binaries directory structure
         file: path={{ binary_root }} state=directory
         tags: binary
 
@@ -47,4 +47,13 @@
             dest={{ binary_root }}
             recursive=yes
         tags: binary
+
+      - name: synchonize local dist directory
+        synchronize:
+            src={{ binary_root }}/
+            dest={{ qtrpi_local_root }}/dist
+            mode=pull
+            recursive=yes
+            delete=yes
+        tags: sync
 
