@@ -6,5 +6,6 @@ export class SysrootVersion {
 export class SysrootBinary {
     type: string;
     url: string;
+    releaseDate: string;
 }
 

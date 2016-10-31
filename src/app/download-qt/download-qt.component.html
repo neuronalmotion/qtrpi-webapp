@@ -4,12 +4,14 @@
         <thead>
             <tr>
                 <th>Qt Modules</th>
+                <th>Release date</th>
                 <th>Download</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let qt of qtVersion.binaries">
                 <td>{{qt.modules}}</td>
+                <td>{{qt.releaseDate}}</td>
                 <td>
                     <a href="{{qt.urlRPi2}}">QtRpi for Raspberry Pi 2</a>
                 </td>

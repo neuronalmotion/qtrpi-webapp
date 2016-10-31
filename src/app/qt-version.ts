@@ -8,5 +8,6 @@ export class QtBinary {
     urlRPi1: string;
     urlRPi2: string;
     urlRPi3: string;
+    releaseDate: string;
 }
 

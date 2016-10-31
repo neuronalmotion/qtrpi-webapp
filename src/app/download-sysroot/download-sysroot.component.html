@@ -5,6 +5,7 @@
             <tr>
                 <th>Version</th>
                 <th>Type</th>
+                <th>Release date</th>
                 <th>Download</th>
             </tr>
         </thead>
@@ -12,6 +13,7 @@
             <tr *ngFor="let sysroot of sysrootVersion.binaries">
                 <td>{{sysrootVersion.versionName}}</td>
                 <td>{{sysroot.type}}</td>
+                <td>{{sysroot.releaseDate}}</td>
                 <td>
                     <a href="{{sysroot.url}}">Link</a>
                 </td>
