@@ -14,7 +14,7 @@ export class DownloadSysrootComponent implements OnInit {
                 {
                     type: 'minimal',
                     url: '/downloads/sysroot/qtrpi-sysroot-minimal-2016-09-23-raspbian-jessie.zip',
-                    releaseDate: '2016-10-31'
+                    releaseDate: '2016-11-02'
                 }
             ]
         }

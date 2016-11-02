@@ -16,7 +16,7 @@ export class DownloadQtComponent implements OnInit {
                     urlRPi1: '/downloads/qt/rpi1/none',
                     urlRPi2: '/downloads/qt/rpi2/qtrpi-linux-rasp-pi2-g%2B%2B_qt-5.7_20161031.zip',
                     urlRPi3: '/downloads/qt/rpi3/none',
-                    releaseDate: '2016-10-31'
+                    releaseDate: '2016-11-02'
                 }
             ]
         }
