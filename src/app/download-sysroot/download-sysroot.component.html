@@ -1,0 +1,23 @@
+<div *ngFor="let sysrootVersion of sysrootVersions">
+    <h2>Sysroots</h2>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Version</th>
+                <th>Type</th>
+                <th>Release date</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sysroot of sysrootVersion.binaries">
+                <td>{{sysrootVersion.versionName}}</td>
+                <td>{{sysroot.type}}</td>
+                <td>{{sysroot.releaseDate}}</td>
+                <td>
+                    <a href="{{sysroot.url}}">Link</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

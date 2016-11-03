@@ -1,0 +1,59 @@
+---
+- hosts: qtrpi.com
+  vars:
+      qtrpi_root: /srv/www/qtrpi
+      doc_root: "{{ qtrpi_root }}/webapp"
+      binary_root: "{{ qtrpi_root }}/downloads"
+      qtrpi_local_root: "{{ lookup('env', 'QTRPI_ROOT')|default('/opt/qtrpi', true) }}"
+
+  roles:
+      - role: jdauphant.nginx
+        nginx_http_params:
+            - access_log "/var/log/nginx/qtrpi.access.log"
+            - error_log "/var/log/nginx/qtrpi.error.log"
+        nginx_sites:
+            qtrpi:
+                - listen 80
+                - server_name www.qtrpi.com
+                - root {{ doc_root }}
+                - location /downloads { root {{ qtrpi_root }}; autoindex on; autoindex_exact_size off; sendfile on; }
+                - location / { try_files $uri $uri/ /index.html; }
+        tags: webapp
+
+  tasks:
+      - name: compile project
+        local_action: command ng build --prod
+        tags: webapp
+
+      - name: create webapp directory structure
+        file: path={{ doc_root }} state=directory
+        tags: webapp
+
+      - name: deploy project
+        synchronize:
+            src=../dist/
+            dest={{ doc_root }}
+            delete=yes
+            recursive=yes
+        tags: webapp
+
+      - name: create binaries directory structure
+        file: path={{ binary_root }} state=directory
+        tags: binary
+
+      - name: deploy qtrpi binaries
+        synchronize:
+            src={{ qtrpi_local_root }}/dist/
+            dest={{ binary_root }}
+            recursive=yes
+        tags: binary
+
+      - name: synchonize local dist directory
+        synchronize:
+            src={{ binary_root }}/
+            dest={{ qtrpi_local_root }}/dist
+            mode=pull
+            recursive=yes
+            delete=yes
+        tags: sync
+
