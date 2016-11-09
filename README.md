@@ -1,5 +1,7 @@
 # qtrpi-webapp
 
+This Angular2 / Typescript repository contains the code of the public website http://www.qtrpi.com/.
+
 ## Getting started on your development machine
 Start by installing Ansible on your development machine:
 ```bash
