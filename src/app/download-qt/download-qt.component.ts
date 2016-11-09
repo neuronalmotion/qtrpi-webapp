@@ -19,6 +19,18 @@ export class DownloadQtComponent implements OnInit {
                     releaseDate: '2016-11-02'
                 }
             ]
+        },
+        {
+            versionName: '5.6.2',
+            binaries: [
+                {
+                    modules: 'Qt Base, Qt Declarative (Quick 2), Qt Quick Controls, Qt Quick Controls 2, Qt 3D',
+                    urlRPi1: '/downloads/qtrpi/rpi1/none',
+                    urlRPi2: '/downloads/qtrpi/rpi2/qtrpi-rpi2_qt-5.6.2.zip',
+                    urlRPi3: '/downloads/qtrpi/rpi3/none',
+                    releaseDate: '2016-11-09'
+                }
+            ]
         }
     ]
 
