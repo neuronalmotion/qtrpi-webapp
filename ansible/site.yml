@@ -8,11 +8,10 @@
 
   roles:
       - role: jdauphant.nginx
-        nginx_http_params:
-            - access_log "/var/log/nginx/qtrpi.access.log"
-            - error_log "/var/log/nginx/qtrpi.error.log"
         nginx_sites:
             qtrpi:
+                - access_log "/var/log/nginx/qtrpi.access.log"
+                - error_log "/var/log/nginx/qtrpi.error.log"
                 - listen 80
                 - server_name www.qtrpi.com
                 - root {{ doc_root }}
