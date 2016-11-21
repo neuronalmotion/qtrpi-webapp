@@ -188,7 +188,7 @@ export QTRPI_TARGET_HOST='pi@1.2.3.4'</pre>
     At the end of the execution of the script, you should have a new directory <b>/opt/qtrpi</b> with:
     </p>
     <ul>
-        <li><b>bin</b>: that contains <i>qmake-rpi</i>, a symbolic link to the pre-configured qmake</li>
+        <li><b>bin</b>: that contains <i>qmake-qtrpi</i>, a symbolic link to the pre-configured qmake</li>
         <li><b>raspbian</b>: the sysroot</li>
         <li><b>raspi</b>: the toolchain, the preconfigured Qt, the precompiled Qt for Raspberry Pi</li>
     </ul>
@@ -227,11 +227,11 @@ source ~/.bashrc</pre>
 
 <h2 class="answer"><a name="howtouse">How to use QtRpi?</a></h2>
 <p>
-Now that QtRpi is installed on your computer and deployed to your Raspberry Pi, you can cross-compile Qt applications. You can do it easily on your project with <b>qmake-rpi</b>.
+Now that QtRpi is installed on your computer and deployed to your Raspberry Pi, you can cross-compile Qt applications. You can do it easily on your project with <b>qmake-qtrpi</b>.
 </p>
 <pre>
 cd myproject
-qmake-rpi
+/opt/qtrpi/bin/qmake-qtrpi # the full path can be omitted if you added /opt/qtrpi/bin to your PATH
 make
 </pre>
 <p>
