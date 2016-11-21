@@ -151,12 +151,23 @@ QtRpi requires a couple of tasks to be properly installed on both your computer 
             </tr>
             <tr>
                 <td>QTRPI_TARGET_HOST</td>
-                <td>The Raspberry Pi SSH host name (usually the IP of your board). Example: pi@192.168.1.5</td>
-                <td></td>
-                <td></td>
+                <td>The Raspberry Pi SSH host name (usually the IP of your board)</td>
+                <td>user@ip</td>
+                <td><i>None</i></td>
             </tr>
         </tbody>
     </table>
+
+    <p>
+    Here is an example to configure qtrpi with Qt 5.6.2 on a Raspberry Pi 3 (you can do this in your terminal or add it to your <b>.bashrc</b>):
+    </p>
+    <pre>
+export QTRPI_QT_VERSION='5.6.2'
+export QTRPI_TARGET_DEVICE='linux-rpi3-g++'
+export QTRPI_TARGET_HOST='pi@1.2.3.4'</pre>
+    <p>
+    The last <i>export QTRPI_TARGET_HOST</i> should contain the IP address of your Raspberry Pi. This variable will be picked later by the <b>deploy-qtrpi.sh</b> script to deploy the Qt binaries.
+    </p>
 </div>
 
 <div class="step">
@@ -195,7 +206,10 @@ QtRpi requires a couple of tasks to be properly installed on both your computer 
     This script will connect to your Raspbery Pi and install / update everything that is needed to run Qt applications.
     </p>
     <p>
-    At the end of the script, your Raspberry Pi should contain the directory <b>/local/usr/qt5pi</b> with the the precompiled Qt for Raspberry Pi.
+    Note that the script will use <i>sudo</i> several times to install the packages on the board. You should add your SSH key in your Raspberry Pi (using <i>ssh-copy-id</i> for example) or update your <i>.netrc</i> to avoid retyping pi's user password.
+    </p>
+    <p>
+    At the end of the script, your Raspberry Pi should contain the directory <b>/usr/local/qt5pi</b> with the the precompiled Qt for Raspberry Pi.
     </p>
 </div>
 
