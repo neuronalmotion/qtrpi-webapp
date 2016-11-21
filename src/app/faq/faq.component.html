@@ -101,6 +101,12 @@ Right now, we support the following versions of Raspberry Pi:
 QtRpi requires a couple of tasks to be properly installed on both your computer and your Raspberry Pi. To make the installation easier, we created a script to automatically perform all the steps for you. This script, <b>init-qtrpi-minimal.sh</b>, can be found on our <a href="https://github.com/neuronalmotion/qtrpi">QtRpi</a> repository on GitHub.
 </p>
 
+<div class="alert alert-info">
+    <p>
+    <b>init-qtrpi-minimal.sh</b> will download the pre-compiled 64-bit Qt binaries on your host machine. If you are running a 32-bit linux host, use <b>init-qtrpi-full.sh</b> to generate the 32-bit binaries on your machine (this will take much longer than <i>qtrpi-minimal</i>!).
+    </p>
+</div>
+
 <div class="step">
     <h4>
         1. Clone the repository on your computer
@@ -205,9 +211,11 @@ export QTRPI_TARGET_HOST='pi@1.2.3.4'</pre>
     <p>
     This script will connect to your Raspbery Pi and install / update everything that is needed to run Qt applications.
     </p>
-    <p>
-    Note that the script will use <i>sudo</i> several times to install the packages on the board. You should add your SSH key in your Raspberry Pi (using <i>ssh-copy-id</i> for example) or update your <i>.netrc</i> to avoid retyping pi's user password.
-    </p>
+    <div class="alert alert-info">
+        <p>
+        The script will use <i>sudo</i> several times to install the packages on the board. You should add your SSH key in your Raspberry Pi (using <i>ssh-copy-id</i> for example) or update your <i>.netrc</i> to avoid retyping pi's user password.
+        </p>
+    </div>
     <p>
     At the end of the script, your Raspberry Pi should contain the directory <b>/usr/local/qt5pi</b> with the the precompiled Qt for Raspberry Pi.
     </p>
