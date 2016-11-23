@@ -18,6 +18,9 @@
         <a href="/faq#supportedrpi">What version of Raspberry Pi is supported?</a>
     </li>
     <li class="list-group-item">
+        <a href="/faq#whatdoineed">What do I need to use Qtrpi?</a>
+    </li>
+    <li class="list-group-item">
         <a href="/faq#howtoinstall">How to install QtRpi?</a>
     </li>
     <li class="list-group-item">
@@ -96,17 +99,36 @@ Right now, we support the following versions of Raspberry Pi:
     <li>Raspberry Pi 3</li>
 </ul>
 
+<h2 class="answer"><a name="whatdoineed">What do I need to use Qtrpi?</a></h2>
+<p>
+To use Qtrpi, you need the following:
+</p>
+<ul>
+    <li><b>A 64-bit linux system</b></li>
+    <li><b>an SSH reachable RaspberryPi</b> with Raspbian installed</li>
+</ul>
+<p>
+Right now, Qtrpi has been tested on an Ubuntu system. If you used something else (other Linux distro, macOS, Windows with Bash / Cygwin), please tell us!
+</p>
+
 <h2 class="answer"><a name="howtoinstall">How to install QtRpi?</a></h2>
 <p>
 QtRpi requires a couple of tasks to be properly installed on both your computer and your Raspberry Pi. To make the installation easier, we created a script to automatically perform all the steps for you. This script, <b>init-qtrpi-minimal.sh</b>, can be found on our <a href="https://github.com/neuronalmotion/qtrpi">QtRpi</a> repository on GitHub.
 </p>
+
+<div class="alert alert-info">
+    <p>
+    32-bit linux host is currently not supported
+    </p>
+</div>
 
 <div class="step">
     <h4>
         1. Clone the repository on your computer
     </h4>
 
-    <pre>git clone https://github.com/neuronalmotion/qtrpi.git</pre>
+    <pre>git clone https://github.com/neuronalmotion/qtrpi.git
+cd qtrpi</pre>
     <p>
     or <a href="https://github.com/neuronalmotion/qtrpi/archive/develop.zip">download the ZIP file</a>.
     </p>
@@ -125,7 +147,7 @@ QtRpi requires a couple of tasks to be properly installed on both your computer 
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Values</th>
+                <th>Supported values</th>
                 <th>Default value</th>
             </tr>
         </thead>
@@ -133,23 +155,41 @@ QtRpi requires a couple of tasks to be properly installed on both your computer 
             <tr>
                 <td>QTRPI_QT_VERSION</td>
                 <td>The version of the Qt framework</td>
-                <td>5.7.0 / 5.6.2</td>
+                <td>
+                    5.6.2<br/>
+                    5.7.0
+                </td>
                 <td>5.7.0</td>
             </tr>
             <tr>
                 <td>QTRPI_TARGET_DEVICE</td>
                 <td>The version of the Raspberry Pi board</td>
-                <td>linux-rasp-pi2-g++</td>
+                <td>
+                    linux-rasp-pi-g++ <br/>
+                    linux-rasp-pi2-g++ <br/>
+                    linux-rpi3-g++
+                </td>
                 <td>linux-rasp-pi2-g++</td>
             </tr>
             <tr>
                 <td>QTRPI_TARGET_HOST</td>
-                <td>The Raspberry Pi SSH host name (usually the IP of your board). Example: pi@192.168.1.5</td>
-                <td></td>
-                <td></td>
+                <td>The Raspberry Pi SSH host name (usually the IP of your board)</td>
+                <td>user@ip</td>
+                <td><i>None</i></td>
             </tr>
         </tbody>
     </table>
+
+    <p>
+    Here is an example to configure qtrpi with Qt 5.6.2 on a Raspberry Pi 3 (you can do this in your terminal or add it to your <b>.bashrc</b>):
+    </p>
+    <pre>
+export QTRPI_QT_VERSION='5.6.2'
+export QTRPI_TARGET_DEVICE='linux-rpi3-g++'
+export QTRPI_TARGET_HOST='pi@1.2.3.4'</pre>
+    <p>
+    The last <i>export QTRPI_TARGET_HOST</i> should contain the IP address of your Raspberry Pi. This variable will be picked later by the <b>deploy-qtrpi.sh</b> script to deploy the Qt binaries.
+    </p>
 </div>
 
 <div class="step">
@@ -170,7 +210,7 @@ QtRpi requires a couple of tasks to be properly installed on both your computer 
     At the end of the execution of the script, you should have a new directory <b>/opt/qtrpi</b> with:
     </p>
     <ul>
-        <li><b>bin</b>: that contains <i>qmake-rpi</i>, a symbolic link to the pre-configured qmake</li>
+        <li><b>bin</b>: that contains <i>qmake-qtrpi</i>, a symbolic link to the pre-configured qmake</li>
         <li><b>raspbian</b>: the sysroot</li>
         <li><b>raspi</b>: the toolchain, the preconfigured Qt, the precompiled Qt for Raspberry Pi</li>
     </ul>
@@ -187,8 +227,13 @@ QtRpi requires a couple of tasks to be properly installed on both your computer 
     <p>
     This script will connect to your Raspbery Pi and install / update everything that is needed to run Qt applications.
     </p>
+    <div class="alert alert-info">
+        <p>
+        The script will use <i>sudo</i> several times to install the packages on the board. You should add your SSH key in your Raspberry Pi (using <i>ssh-copy-id</i> for example) or update your <i>.netrc</i> to avoid retyping pi's user password.
+        </p>
+    </div>
     <p>
-    At the end of the script, your Raspberry Pi should contain the directory <b>/local/usr/qt5pi</b> with the the precompiled Qt for Raspberry Pi.
+    At the end of the script, your Raspberry Pi should contain the directory <b>/usr/local/qt5pi</b> with the the precompiled Qt for Raspberry Pi.
     </p>
 </div>
 
@@ -206,11 +251,11 @@ source ~/.bashrc</pre>
 
 <h2 class="answer"><a name="howtouse">How to use QtRpi?</a></h2>
 <p>
-Now that QtRpi is installed on your computer and deployed to your Raspberry Pi, you can cross-compile Qt applications. You can do it easily on your project with <b>qmake-rpi</b>.
+Now that QtRpi is installed on your computer and deployed to your Raspberry Pi, you can cross-compile Qt applications. You can do it easily on your project with <b>qmake-qtrpi</b>.
 </p>
 <pre>
 cd myproject
-qmake-rpi
+/opt/qtrpi/bin/qmake-qtrpi # the full path can be omitted if you added /opt/qtrpi/bin to your PATH
 make
 </pre>
 <p>

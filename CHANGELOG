@@ -1,3 +1,9 @@
+v1.3.0 - 2016-11-23
+- Add 64-bit explanation in FAQ
+- Fix nginx conf to handle *.qtrpi.com
+- Move analytics js code in head tag
+- Update FAQ with exported variables
+
 v1.2.1 - 2016-11-09
 - Update favicon and fix labels in download page
 
