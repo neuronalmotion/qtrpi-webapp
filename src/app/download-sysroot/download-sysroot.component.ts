@@ -9,12 +9,12 @@ export class DownloadSysrootComponent implements OnInit {
 
   sysrootVersions: SysrootVersion[] = [
         {
-            versionName: '2016-09-23-raspbian-jessie',
+            versionName: '2017-03-02-raspbian-jessie',
             binaries: [
                 {
                     type: 'minimal',
-                    url: '/downloads/sysroot/qtrpi-sysroot-minimal-2016-09-23-raspbian-jessie.zip',
-                    releaseDate: '2016-11-09'
+                    url: '/downloads/sysroot/qtrpi-sysroot-minimal-2017-03-02-raspbian-jessie.zip',
+                    releaseDate: '2017-03-02'
                 }
             ]
         }
