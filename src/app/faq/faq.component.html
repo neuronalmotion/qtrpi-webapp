@@ -27,6 +27,9 @@
         <a href="/faq#howtouse">How to use QtRpi?</a>
     </li>
     <li class="list-group-item">
+        <a href="/faq#howtoconfigureqtcreator">How to configure Qt Creator to use QtRpi?</a>
+    </li>
+    <li class="list-group-item">
         <a href="/faq#contact">How to contact us?</a>
     </li>
     <li class="list-group-item">
@@ -263,6 +266,33 @@ make
 <p>
 The generated binary file is ready to be copied and executed on your Raspberry Pi!
 </p>
+<h2 class="answer"><a name="howtoconfigureqtcreator">How to configure Qt Creator to use QtRpi?</a></h2>
+<p>
+We published a video on Youtube to describe the configuration of Qt Creator with QtRpi. With this configuration you will have:
+</p>
+<ul>
+    <li><strong>A custom Qt kit</strong> that will let you  cross-compile  Qt applications (<em>with the speed of your computer's CPUs</em>) for your Raspberry Pi</li>
+    <li><strong>An automatic deployment configuration</strong> that will copy the cross-compiled binary to your Raspberry Pi</li>
+    <li><strong>A remote debugger</strong> that will enable you to execute your program step by step directly on your Raspberry Pi</li>
+</ul>
+
+<p>
+The only step that you have to do before watching the video is to install the <em>multi-architecture debugger</em> (gdb-multiarch):
+</p>
+<pre>sudo apt-get install gdb-multiarch</pre>
+
+<p>
+We assume that your QtRpi is already properly installed (on your computer and Raspberry Pi).
+</p>
+<div class="alert alert-info">
+    <p>
+    This video targets a Raspberry Pi 3, but you can use any supported version of Raspberry Pi (1, 2, 3)
+    </p>
+</div>
+<p style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/1d2bh7iUKNc" frameborder="0" allowfullscreen></iframe>
+</p>
+
 
 <h2 class="answer"><a name="contact">How to contact us?</a></h2>
 <p>
