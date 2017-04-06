@@ -127,6 +127,10 @@ QtRpi requires a couple of tasks to be properly installed on both your computer 
     </p>
 </div>
 
+<p style="text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/YYOjdwT5UuQ" frameborder="0" allowfullscreen></iframe>
+</p>
+
 <div class="step">
     <h4>
         1. Clone the repository on your computer
@@ -186,7 +190,7 @@ cd qtrpi</pre>
     </table>
 
     <p>
-    Here is an example to configure qtrpi with Qt 5.6.2 on a Raspberry Pi 3 (you can do this in your terminal or add it to your <b>.bashrc</b>):
+    Here is an example to configure qtrpi with Qt 5.6.2 on a Raspberry Pi 3 (you can do this in your terminal or add it to your <b>/home/user/.bashrc</b>):
     </p>
     <pre>
 export QTRPI_QT_VERSION='5.6.2'
@@ -234,7 +238,7 @@ export QTRPI_TARGET_HOST='pi@1.2.3.4'</pre>
     </p>
     <div class="alert alert-info">
         <p>
-        The script will use <i>sudo</i> several times to install the packages on the board. You should add your SSH key in your Raspberry Pi (using <i>ssh-copy-id</i> for example) or update your <i>.netrc</i> to avoid retyping pi's user password.
+        The script will use <i>sudo</i> several times to install the packages on the board. You should add your SSH key in your Raspberry Pi (using <i>ssh-copy-id</i> for example) or update your <i>/home/user/.netrc</i> to avoid retyping pi's user password.
         </p>
     </div>
     <p>
@@ -250,7 +254,7 @@ export QTRPI_TARGET_HOST='pi@1.2.3.4'</pre>
     Add the directory <b>/opt/qtrpi/bin</b> to your PATH.
     </p>
     <pre>
-export PATH=/opt/qtrpi/bin:$PATH # Add this line to your .bashrc
+export PATH=/opt/qtrpi/bin:$PATH # Add this line to your /home/user/.bashrc
 source ~/.bashrc</pre>
 </div>
 
